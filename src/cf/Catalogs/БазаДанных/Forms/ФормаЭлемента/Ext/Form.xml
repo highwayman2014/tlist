@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.13">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаСообщитьПароль" id="36">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.СообщитьПароль</CommandName>
+				<ExtendedTooltip name="ФормаСообщитьПарольРасширеннаяПодсказка" id="37"/>
+			</Button>
+			<Button name="ФормаСообщитьПарольХранилище" id="52">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.СообщитьПарольХранилище</CommandName>
+				<ExtendedTooltip name="ФормаСообщитьПарольХранилищеРасширеннаяПодсказка" id="53"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<ChildItems>
+		<UsualGroup name="ГруппаКодНаименование" id="25">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа код наименование</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа код наименование</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>AlwaysHorizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаКодНаименованиеРасширеннаяПодсказка" id="26"/>
+			<ChildItems>
+				<InputField name="Наименование" id="4">
+					<DataPath>Объект.Description</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="НаименованиеКонтекстноеМеню" id="5"/>
+					<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="6"/>
+				</InputField>
+				<CheckBoxField name="Обновляется" id="30">
+					<DataPath>Объект.Обновляется</DataPath>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ОбновляетсяКонтекстноеМеню" id="31"/>
+					<ExtendedTooltip name="ОбновляетсяРасширеннаяПодсказка" id="32"/>
+				</CheckBoxField>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="Владелец" id="33">
+			<DataPath>Объект.Owner</DataPath>
+			<ContextMenu name="ВладелецКонтекстноеМеню" id="34"/>
+			<ExtendedTooltip name="ВладелецРасширеннаяПодсказка" id="35"/>
+		</InputField>
+		<InputField name="ПутьКБазе" id="7">
+			<DataPath>Объект.ПутьКБазе</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="ПутьКБазеКонтекстноеМеню" id="8"/>
+			<ExtendedTooltip name="ПутьКБазеРасширеннаяПодсказка" id="9"/>
+		</InputField>
+		<InputField name="Пользователь" id="10">
+			<DataPath>Объект.Пользователь</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="ПользовательКонтекстноеМеню" id="11"/>
+			<ExtendedTooltip name="ПользовательРасширеннаяПодсказка" id="12"/>
+		</InputField>
+		<InputField name="Пароль" id="13">
+			<DataPath>Объект.Пароль</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<PasswordMode>true</PasswordMode>
+			<ContextMenu name="ПарольКонтекстноеМеню" id="14"/>
+			<ExtendedTooltip name="ПарольРасширеннаяПодсказка" id="15"/>
+		</InputField>
+		<InputField name="СКакогоСервераПодключаться" id="16">
+			<DataPath>Объект.СКакогоСервераПодключаться</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="СКакогоСервераПодключатьсяКонтекстноеМеню" id="17"/>
+			<ExtendedTooltip name="СКакогоСервераПодключатьсяРасширеннаяПодсказка" id="18"/>
+		</InputField>
+		<InputField name="Конфигурация" id="19">
+			<DataPath>Объект.Конфигурация</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="КонфигурацияКонтекстноеМеню" id="20"/>
+			<ExtendedTooltip name="КонфигурацияРасширеннаяПодсказка" id="21"/>
+		</InputField>
+		<InputField name="РелизКонфигурации" id="22">
+			<DataPath>Объект.РелизКонфигурации</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="РелизКонфигурацииКонтекстноеМеню" id="23"/>
+			<ExtendedTooltip name="РелизКонфигурацииРасширеннаяПодсказка" id="24"/>
+		</InputField>
+		<UsualGroup name="ГруппаХранилище" id="41">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Хранилище</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа хранилище</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Behavior>Usual</Behavior>
+			<Representation>StrongSeparation</Representation>
+			<ExtendedTooltip name="ГруппаХранилищеРасширеннаяПодсказка" id="42"/>
+			<ChildItems>
+				<InputField name="ПользовательХранилище" id="43">
+					<DataPath>Объект.ПользовательХранилище</DataPath>
+					<ContextMenu name="ПользовательХранилищеКонтекстноеМеню" id="44"/>
+					<ExtendedTooltip name="ПользовательХранилищеРасширеннаяПодсказка" id="45"/>
+				</InputField>
+				<InputField name="ПарольХранилище" id="46">
+					<DataPath>Объект.ПарольХранилище</DataPath>
+					<ContextMenu name="ПарольХранилищеКонтекстноеМеню" id="47"/>
+					<ExtendedTooltip name="ПарольХранилищеРасширеннаяПодсказка" id="48"/>
+				</InputField>
+				<InputField name="АдресХранилище" id="49">
+					<DataPath>Объект.АдресХранилище</DataPath>
+					<ContextMenu name="АдресХранилищеКонтекстноеМеню" id="50"/>
+					<ExtendedTooltip name="АдресХранилищеРасширеннаяПодсказка" id="51"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<CheckBoxField name="ДоработкиВОсновнойКонфигурации" id="54">
+			<DataPath>Объект.ДоработкиВОсновнойКонфигурации</DataPath>
+			<CheckBoxType>Auto</CheckBoxType>
+			<ContextMenu name="ДоработкиВОсновнойКонфигурацииКонтекстноеМеню" id="55"/>
+			<ExtendedTooltip name="ДоработкиВОсновнойКонфигурацииРасширеннаяПодсказка" id="56"/>
+		</CheckBoxField>
+		<CheckBoxField name="ДоработкиВРасширенияхКонфигурации" id="57">
+			<DataPath>Объект.ДоработкиВРасширенияхКонфигурации</DataPath>
+			<CheckBoxType>Auto</CheckBoxType>
+			<ContextMenu name="ДоработкиВРасширенияхКонфигурацииКонтекстноеМеню" id="58"/>
+			<ExtendedTooltip name="ДоработкиВРасширенияхКонфигурацииРасширеннаяПодсказка" id="59"/>
+		</CheckBoxField>
+		<InputField name="Комментарий" id="60">
+			<DataPath>Объект.Комментарий</DataPath>
+			<MultiLine>true</MultiLine>
+			<ContextMenu name="КомментарийКонтекстноеМеню" id="61"/>
+			<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="62"/>
+		</InputField>
+		<InputField name="Ответственный" id="38">
+			<DataPath>Объект.Ответственный</DataPath>
+			<ContextMenu name="ОтветственныйКонтекстноеМеню" id="39"/>
+			<ExtendedTooltip name="ОтветственныйРасширеннаяПодсказка" id="40"/>
+		</InputField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.БазаДанных</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="СообщитьПароль" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сообщить пароль</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сообщить пароль</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Find</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>СообщитьПароль</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="СообщитьПарольХранилище" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сообщить пароль хранилище</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сообщить пароль</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Find</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>СообщитьПарольХранилище</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+	</Commands>
+</Form>

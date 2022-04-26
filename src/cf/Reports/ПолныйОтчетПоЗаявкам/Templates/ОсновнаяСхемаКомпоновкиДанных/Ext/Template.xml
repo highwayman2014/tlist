@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>НомерЗаявкиВСервисДеске</dataPath>
+			<field>НомерЗаявкиВСервисДеске</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>НачалоФакт</dataPath>
+			<field>НачалоФакт</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ТекстЗадания</dataPath>
+			<field>ТекстЗадания</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Проект</dataPath>
+			<field>Проект</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВремяПлан</dataPath>
+			<field>ВремяПлан</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Заказчик</dataPath>
+			<field>Заказчик</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Конфигурация</dataPath>
+			<field>Конфигурация</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ОкончаниеФакт</dataPath>
+			<field>ОкончаниеФакт</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПринятоКИсполнению</dataPath>
+			<field>ПринятоКИсполнению</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Тема</dataPath>
+			<field>Тема</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Проведен</dataPath>
+			<field>Проведен</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Срочность</dataPath>
+			<field>Срочность</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДокументОснование</dataPath>
+			<field>ДокументОснование</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>НачалоПлан</dataPath>
+			<field>НачалоПлан</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Категория</dataPath>
+			<field>Категория</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>НаименованиеОбработки</dataPath>
+			<field>НаименованиеОбработки</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПлановыеТрудозатраты</dataPath>
+			<field>ПлановыеТрудозатраты</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Постановщик</dataPath>
+			<field>Постановщик</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВремяФакт</dataPath>
+			<field>ВремяФакт</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДатаПриемки</dataPath>
+			<field>ДатаПриемки</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ОкончаниеПлан</dataPath>
+			<field>ОкончаниеПлан</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ОтчетОПроделаннойРаботе</dataPath>
+			<field>ОтчетОПроделаннойРаботе</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ОтветственныйИсполнитель</dataPath>
+			<field>ОтветственныйИсполнитель</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Статус</dataPath>
+			<field>Статус</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>НомерРелиза</dataPath>
+			<field>НомерРелиза</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Ссылка</dataPath>
+			<field>Ссылка</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПометкаУдаления</dataPath>
+			<field>ПометкаУдаления</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Дата</dataPath>
+			<field>Дата</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПервичныйДокумент</dataPath>
+			<field>ПервичныйДокумент</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Комментарий</dataPath>
+			<field>Комментарий</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Номер</dataPath>
+			<field>Номер</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ЗатраченноеВремя</dataPath>
+			<field>ЗатраченноеВремя</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Затраченное время</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	Задание.Ссылка,
+	Задание.Номер,
+	Задание.Дата,
+	Задание.ДокументОснование,
+	Задание.Тема,
+	Задание.ТекстЗадания,
+	Задание.Постановщик,
+	Задание.Конфигурация,
+	Задание.Заказчик,
+	Задание.Проект,
+	Задание.Категория,
+	Задание.Срочность,
+	Задание.НачалоПлан,
+	Задание.ОкончаниеПлан,
+	Задание.ВремяПлан,
+	Задание.Статус,
+	Задание.НачалоФакт,
+	Задание.ПринятоКИсполнению,
+	Задание.ОкончаниеФакт,
+	Задание.ВремяФакт,
+	Задание.ДатаПриемки,
+	Задание.Комментарий,
+	Задание.ОтчетОПроделаннойРаботе,
+	Задание.ПервичныйДокумент,
+	Задание.ОтветственныйИсполнитель,
+	Задание.НаименованиеОбработки,
+	Задание.ПлановыеТрудозатраты,
+	Задание.НомерЗаявкиВСервисДеске,
+	Задание.НомерРелиза,
+	Задание.Проведен,
+	Задание.ПометкаУдаления,
+	ЕСТЬNULL(ВложенныйЗапрос.ЗатраченноеВремя, 0) КАК ЗатраченноеВремя
+ИЗ
+	Документ.Задание КАК Задание
+		ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
+			ЗаданиеТрудозатратыИсполнителей.Ссылка КАК Ссылка,
+			СУММА(ЗаданиеТрудозатратыИсполнителей.ЗатраченноеВремя) КАК ЗатраченноеВремя
+		ИЗ
+			Документ.Задание.ТрудозатратыИсполнителей КАК ЗаданиеТрудозатратыИсполнителей
+		
+		СГРУППИРОВАТЬ ПО
+			ЗаданиеТрудозатратыИсполнителей.Ссылка) КАК ВложенныйЗапрос
+		ПО Задание.Ссылка = ВложенныйЗапрос.Ссылка</query>
+	</dataSet>
+	<totalField>
+		<dataPath>ВремяПлан</dataPath>
+		<expression>Сумма(ВремяПлан)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ВремяФакт</dataPath>
+		<expression>Сумма(ВремяФакт)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ПлановыеТрудозатраты</dataPath>
+		<expression>Сумма(ПлановыеТрудозатраты)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ЗатраченноеВремя</dataPath>
+		<expression>Сумма(ЗатраченноеВремя)</expression>
+	</totalField>
+	<settingsVariant>
+		<dcsset:name>Основной</dcsset:name>
+		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows"/>
+	</settingsVariant>
+</DataCompositionSchema>

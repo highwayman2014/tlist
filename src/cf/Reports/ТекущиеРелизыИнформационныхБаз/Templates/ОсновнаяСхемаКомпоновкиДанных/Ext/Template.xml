@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>РелизКонфигурацииДатаВыпуска</dataPath>
+			<field>РелизКонфигурацииДатаВыпуска</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата выпуска релиза</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>РелизКонфигурации</dataPath>
+			<field>РелизКонфигурации</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Релиз конфигурации текущий</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>БазаДанных</dataPath>
+			<field>БазаДанных</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>База данных</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДатаПоследнегоОбновления</dataPath>
+			<field>ДатаПоследнегоОбновления</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата последнего обновления</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДокументПоследнегоОбновления</dataPath>
+			<field>ДокументПоследнегоОбновления</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документ последнего обновления</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Заказчик</dataPath>
+			<field>Заказчик</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заказчик</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ЕстьНовыйРелиз</dataPath>
+			<field>ЕстьНовыйРелиз</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Есть новый релиз</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	БазаДанных.Владелец,
+	БазаДанных.РелизКонфигурации,
+	БазаДанных.РелизКонфигурации.ДатаВыпуска,
+	БазаДанных.Ссылка,
+	БазаДанных.Конфигурация
+ПОМЕСТИТЬ ВТ_БД
+ИЗ
+	Справочник.БазаДанных КАК БазаДанных
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	МАКСИМУМ(ЗаданиеОбновленныеБазы.Ссылка.Дата) КАК Дата,
+	ЗаданиеОбновленныеБазы.БазаДанных КАК БазаДанных
+ПОМЕСТИТЬ ВТ_ДатыОбновления
+ИЗ
+	Документ.Задание.ОбновленныеБазы КАК ЗаданиеОбновленныеБазы
+ГДЕ
+	ЗаданиеОбновленныеБазы.БазаДанных В
+			(ВЫБРАТЬ
+				ВТ_БД.Ссылка
+			ИЗ
+				ВТ_БД)
+
+СГРУППИРОВАТЬ ПО
+	ЗаданиеОбновленныеБазы.БазаДанных
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ВТ_БД.Ссылка КАК БазаДанных,
+	МАКСИМУМ(НЕ РК.Ссылка ЕСТЬ NULL) КАК ЕстьНовыйРелиз
+ПОМЕСТИТЬ ВТ_НовыеРелизы
+ИЗ
+	ВТ_БД КАК ВТ_БД
+		ЛЕВОЕ СОЕДИНЕНИЕ Справочник.РелизКонфигурации КАК РК
+		ПО ВТ_БД.Конфигурация = РК.Владелец
+			И ВТ_БД.РелизКонфигурацииДатаВыпуска &lt; РК.ДатаВыпуска
+
+СГРУППИРОВАТЬ ПО
+	ВТ_БД.Ссылка
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ВТ_БД.Ссылка КАК БазаДанных,
+	ВТ_БД.РелизКонфигурации,
+	ВТ_БД.РелизКонфигурацииДатаВыпуска,
+	ВТ_ДатыОбновления.Дата КАК ДатаПоследнегоОбновления,
+	ВТ_БД.Владелец КАК Заказчик,
+	ВТ_НовыеРелизы.ЕстьНовыйРелиз,
+	ЗаданиеОбновленныеБазы.Ссылка КАК ДокументПоследнегоОбновления
+ИЗ
+	ВТ_БД КАК ВТ_БД
+		ЛЕВОЕ СОЕДИНЕНИЕ ВТ_ДатыОбновления КАК ВТ_ДатыОбновления
+			ВНУТРЕННЕЕ СОЕДИНЕНИЕ Документ.Задание.ОбновленныеБазы КАК ЗаданиеОбновленныеБазы
+			ПО (ЗаданиеОбновленныеБазы.Ссылка.Дата = ВТ_ДатыОбновления.Дата)
+				И (ЗаданиеОбновленныеБазы.БазаДанных = ВТ_ДатыОбновления.БазаДанных)
+		ПО ВТ_БД.Ссылка = ВТ_ДатыОбновления.БазаДанных
+		ЛЕВОЕ СОЕДИНЕНИЕ ВТ_НовыеРелизы КАК ВТ_НовыеРелизы
+		ПО ВТ_БД.Ссылка = ВТ_НовыеРелизы.БазаДанных
+
+СГРУППИРОВАТЬ ПО
+	ВТ_ДатыОбновления.Дата,
+	ВТ_БД.Владелец,
+	ВТ_НовыеРелизы.ЕстьНовыйРелиз,
+	ВТ_БД.РелизКонфигурацииДатаВыпуска,
+	ВТ_БД.Ссылка,
+	ВТ_БД.РелизКонфигурации,
+	ЗаданиеОбновленныеБазы.Ссылка</query>
+	</dataSet>
+	<settingsVariant>
+		<dcsset:name>Основной</dcsset:name>
+		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>БазаДанных</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>РелизКонфигурации</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>РелизКонфигурацииДатаВыпуска</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ДатаПоследнегоОбновления</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ДокументПоследнегоОбновления</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ЕстьНовыйРелиз</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:conditionalAppearance>
+				<dcsset:item>
+					<dcsset:selection/>
+					<dcsset:filter>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ЕстьНовыйРелиз</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+						</dcsset:item>
+					</dcsset:filter>
+					<dcsset:appearance>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:parameter>ЦветТекста</dcscor:parameter>
+							<dcscor:value xsi:type="v8ui:Color">#FF0000</dcscor:value>
+						</dcscor:item>
+					</dcsset:appearance>
+					<dcsset:useInHierarchicalGroup>DontUse</dcsset:useInHierarchicalGroup>
+					<dcsset:useInOverall>DontUse</dcsset:useInOverall>
+					<dcsset:useInFieldsHeader>DontUse</dcsset:useInFieldsHeader>
+					<dcsset:useInHeader>DontUse</dcsset:useInHeader>
+					<dcsset:useInParameters>DontUse</dcsset:useInParameters>
+					<dcsset:useInFilter>DontUse</dcsset:useInFilter>
+				</dcsset:item>
+			</dcsset:conditionalAppearance>
+			<dcsset:outputParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>МакетОформления</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">Море</dcscor:value>
+				</dcscor:item>
+			</dcsset:outputParameters>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>Заказчик</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+				</dcsset:item>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>
